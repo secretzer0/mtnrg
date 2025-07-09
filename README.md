@@ -48,7 +48,46 @@ git commit -m "Description of changes"
 git push origin development
 ```
 
-### 2. Deploy to Production (GitHub Web UI)
+### 2. Deploy to Production
+
+#### Option A: Automated Deployment (Recommended)
+
+Use the included deploy script for one-command deployment:
+
+```bash
+./deploy.sh
+```
+
+This script will automatically:
+- Check all prerequisites
+- Create a pull request
+- Merge it to trigger deployment
+- Show you the build status URL
+
+**First-time setup for automated deployment:**
+
+1. Install GitHub CLI:
+   ```bash
+   # Ubuntu/Debian
+   sudo apt update
+   sudo apt install gh
+   
+   # Or using snap
+   sudo snap install gh
+   ```
+
+2. Authenticate with GitHub:
+   ```bash
+   gh auth login
+   # Choose: GitHub.com → HTTPS → Login with web browser
+   ```
+
+3. Run the deploy script:
+   ```bash
+   ./deploy.sh
+   ```
+
+#### Option B: Manual Deployment (GitHub Web UI)
 
 **Step 1: Create Pull Request**
 1. Go to: https://github.com/secretzer0/mtnrg
