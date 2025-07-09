@@ -37,13 +37,20 @@ function ExternalViewer({ config, canvasStyle, ...rest }) {
   // Apply sandbox permissions
   const sandboxPermissions = config.sandbox?.permissions?.join(" ") || "allow-scripts allow-same-origin";
   
-  // Merge styles
+  // Merge styles - make it responsive and behind other content
   const iframeStyles = {
-    width: "700px",
-    height: "600px",
+    width: "100%",
+    height: "100%",
+    minWidth: "700px",
+    minHeight: "600px",
     border: "none",
     borderRadius: "8px",
-    backgroundColor: "#000",
+    backgroundColor: "transparent",
+    position: "absolute",
+    top: 0,
+    left: 0,
+    zIndex: -1,
+    pointerEvents: "auto",
     ...canvasStyle,
     ...config.sandbox?.styles,
   };
@@ -69,20 +76,29 @@ function ExternalViewer({ config, canvasStyle, ...rest }) {
   }
 
   return (
-    <VuiBox {...rest} position="relative">
+    <VuiBox 
+      {...rest} 
+      sx={{ 
+        width: "700px", 
+        height: "600px",
+        position: "relative",
+        overflow: "hidden",
+        ...rest.sx 
+      }}
+    >
       {loading && (
         <div style={{
           position: "absolute",
           top: 0,
           left: 0,
-          right: 0,
-          bottom: 0,
+          width: "100%",
+          height: "100%",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           backgroundColor: "rgba(0,0,0,0.5)",
+          borderRadius: "8px",
           zIndex: 10,
-          ...iframeStyles,
         }}>
           <VuiTypography variant="body2" color="white">
             Loading...

@@ -33,6 +33,11 @@ function Globe({ canvasStyle, config, ...rest }) {
   const canvasRef = useRef(null);
 
   useEffect(() => {
+    // Only run the globe creation if we're in builtin mode
+    if (config.type !== "builtin") {
+      return;
+    }
+
     function createGlobe() {
       const container = globeRef.current;
       const canvas = canvasRef.current;
@@ -140,7 +145,7 @@ function Globe({ canvasStyle, config, ...rest }) {
     }
 
     createGlobe();
-  }, []);
+  }, [config.type]);
 
   // Conditional rendering based on config type
   if (config.type === "external") {
