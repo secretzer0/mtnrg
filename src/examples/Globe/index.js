@@ -26,6 +26,7 @@ import * as THREE from "three";
 import { OrbitControls } from "@three-ts/orbit-controls";
 
 import VuiBox from "components/VuiBox";
+import ExternalViewer from "./ExternalViewer";
 
 function Globe({ canvasStyle, config, ...rest }) {
   const globeRef = useRef(null);
@@ -143,27 +144,7 @@ function Globe({ canvasStyle, config, ...rest }) {
 
   // Conditional rendering based on config type
   if (config.type === "external") {
-    // Placeholder for external content (will be replaced with ExternalViewer in Step 4)
-    return (
-      <VuiBox {...rest}>
-        <div style={{ 
-          width: "700px", 
-          height: "600px", 
-          display: "flex", 
-          alignItems: "center", 
-          justifyContent: "center",
-          border: "2px dashed #666",
-          borderRadius: "8px",
-          ...canvasStyle 
-        }}>
-          <p style={{ color: "#888", textAlign: "center" }}>
-            External Three.js Example
-            <br />
-            <small>{config.source.url || "No URL specified"}</small>
-          </p>
-        </div>
-      </VuiBox>
-    );
+    return <ExternalViewer config={config} canvasStyle={canvasStyle} {...rest} />;
   }
 
   // Default: render builtin Globe
