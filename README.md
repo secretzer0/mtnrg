@@ -37,58 +37,58 @@ The production build creates optimized static files in the `build/` directory th
 ```bash
 # Always work on development branch
 git checkout development
-
-# Pull latest changes
 git pull origin development
 
-# Make your changes, then commit
+# Make your changes and test locally
+npm start
+
+# When ready, commit and push
 git add .
 git commit -m "Description of changes"
 git push origin development
 ```
 
-### 2. Creating a Pull Request
+### 2. Deploy to Production (GitHub Web UI)
 
-1. Go to your GitHub repository
-2. Click "Pull requests" → "New pull request"
-3. Set: base: `main` ← compare: `development`
-4. Click "Create pull request"
-5. Review your changes
-6. Click "Merge pull request" → "Confirm merge"
+**Step 1: Create Pull Request**
+1. Go to: https://github.com/secretzer0/mtnrg
+2. You'll see a yellow banner: "development had recent pushes"
+3. Click the green **"Compare & pull request"** button
 
-### 3. Build Status
+**Step 2: Review Your Changes**
+1. Check the title (auto-filled from your commit)
+2. Add description if needed
+3. Review the changes shown below
+4. Click green **"Create pull request"** button
 
-After merging:
-1. Go to the "Actions" tab in your repository
-2. Click on the latest workflow run
-3. Check if the build succeeded (green checkmark) or failed (red X)
+**Step 3: Merge to Production**
+1. Wait for checks to pass (if any)
+2. Click green **"Merge pull request"** button
+3. Click green **"Confirm merge"** button
+4. Done! The build starts automatically
+
+### 3. Check Build Status
+
+1. Click the **"Actions"** tab at the top
+2. Look for your merge (top of the list)
+3. ✅ Green check = Success (site is live)
+4. ❌ Red X = Failed (see below)
 
 ### 4. If Build Fails
 
-1. Click on the failed workflow to see error details
-2. Fix the issues in your local development branch:
-   ```bash
-   git checkout development
-   git pull origin main
-   git pull origin development
-   
-   # Fix the issues
-   # Test locally with npm start and npm run build
-   
-   git add .
-   git commit -m "Fix build errors"
-   git push origin development
-   ```
-3. Create a new pull request and merge again
+1. Click the failed workflow to see errors
+2. Fix locally on development branch
+3. Push fixes: `git push origin development`
+4. Repeat pull request process above
 
 ## Quick Reference
 
-- **Local test**: `npm start`
-- **Local build**: `npm run build`
-- **Working branch**: `development`
-- **Production branch**: `main` (protected)
-- **Check build status**: GitHub → Actions tab
-- **View deployed site**: GitHub → Settings → Pages
+- **Test locally**: `npm start`
+- **Your GitHub repo**: https://github.com/secretzer0/mtnrg
+- **Live site**: https://nrg.vyzon.ai
+- **Working branch**: `development` (you edit this)
+- **Production branch**: `main` (never edit directly)
+- **Deploy**: Push to development → Pull Request → Merge
 
 ## Important Notes
 
