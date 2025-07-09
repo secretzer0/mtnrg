@@ -90,9 +90,8 @@ This script will automatically:
 #### Option B: Manual Deployment (GitHub Web UI)
 
 **Step 1: Create Pull Request**
-1. Go to: https://github.com/secretzer0/mtnrg
-2. You'll see a yellow banner: "development had recent pushes"
-3. Click the green **"Compare & pull request"** button
+1. Go directly to: https://github.com/secretzer0/mtnrg/compare/main...development
+2. Click the green **"Create pull request"** button
 
 **Step 2: Review Your Changes**
 1. Check the title (auto-filled from your commit)
