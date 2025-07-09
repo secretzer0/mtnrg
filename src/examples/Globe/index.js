@@ -158,6 +158,18 @@ Globe.defaultProps = {
   canvasStyle: {},
   config: {
     type: "builtin",
+    source: {
+      url: null,
+      proxy: false,
+    },
+    fallback: {
+      enabled: true,
+      useBuiltin: true,
+    },
+    sandbox: {
+      permissions: ["allow-scripts", "allow-same-origin"],
+      styles: {},
+    },
   },
 };
 
@@ -168,6 +180,15 @@ Globe.propTypes = {
     type: PropTypes.oneOf(["builtin", "external"]),
     source: PropTypes.shape({
       url: PropTypes.string,
+      proxy: PropTypes.bool,
+    }),
+    fallback: PropTypes.shape({
+      enabled: PropTypes.bool,
+      useBuiltin: PropTypes.bool,
+    }),
+    sandbox: PropTypes.shape({
+      permissions: PropTypes.arrayOf(PropTypes.string),
+      styles: PropTypes.objectOf(PropTypes.any),
     }),
   }),
 };
