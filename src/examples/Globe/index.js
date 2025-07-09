@@ -26,12 +26,18 @@ import * as THREE from "three";
 import { OrbitControls } from "@three-ts/orbit-controls";
 
 import VuiBox from "components/VuiBox";
+import ExternalViewer from "./ExternalViewer";
 
-function Globe({ canvasStyle, ...rest }) {
+function Globe({ canvasStyle, config, ...rest }) {
   const globeRef = useRef(null);
   const canvasRef = useRef(null);
 
   useEffect(() => {
+    // Only run the globe creation if we're in builtin mode
+    if (config.type !== "builtin") {
+      return;
+    }
+
     function createGlobe() {
       const container = globeRef.current;
       const canvas = canvasRef.current;
@@ -139,8 +145,14 @@ function Globe({ canvasStyle, ...rest }) {
     }
 
     createGlobe();
-  }, []);
+  }, [config.type]);
 
+  // Conditional rendering based on config type
+  if (config.type === "external") {
+    return <ExternalViewer config={config} canvasStyle={canvasStyle} {...rest} />;
+  }
+
+  // Default: render builtin Globe
   return (
     <VuiBox ref={globeRef} {...rest}>
       <canvas
@@ -156,11 +168,44 @@ function Globe({ canvasStyle, ...rest }) {
 // Setting default values for the props for Globe
 Globe.defaultProps = {
   canvasStyle: {},
+  config: {
+    type: "builtin",
+    source: {
+      url: null,
+      proxy: false,
+    },
+    fallback: {
+      enabled: true,
+      useBuiltin: true,
+    },
+    sandbox: {
+      permissions: ["allow-scripts", "allow-same-origin"],
+      styles: {},
+    },
+  },
 };
 
 // Typechecking props for the Globe
 Globe.propTypes = {
   canvasStyle: PropTypes.objectOf(PropTypes.any),
+  config: PropTypes.shape({
+    type: PropTypes.oneOf(["builtin", "external"]),
+    source: PropTypes.shape({
+      url: PropTypes.string,
+      proxy: PropTypes.bool,
+    }),
+    scale: PropTypes.number,
+    opacity: PropTypes.number,
+    aspectRatio: PropTypes.string,
+    fallback: PropTypes.shape({
+      enabled: PropTypes.bool,
+      useBuiltin: PropTypes.bool,
+    }),
+    sandbox: PropTypes.shape({
+      permissions: PropTypes.arrayOf(PropTypes.string),
+      styles: PropTypes.objectOf(PropTypes.any),
+    }),
+  }),
 };
 
 export default Globe;

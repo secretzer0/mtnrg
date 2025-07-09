@@ -25,6 +25,7 @@ import VuiTypography from 'components/VuiTypography';
 import MiniStatisticsCard from 'examples/Cards/StatisticsCards/MiniStatisticsCard';
 import Footer from 'examples/Footer';
 import Globe from 'examples/Globe';
+import { getGlobeConfig } from 'examples/Globe/globe.config';
 // Vision UI Dashboard PRO React example components
 import DashboardLayout from 'examples/LayoutContainers/DashboardLayout';
 import DashboardNavbar from 'examples/Navbars/DashboardNavbar';
@@ -68,6 +69,7 @@ function Default() {
                   mt={{ xs: -12, lg: 1 }}
                   mr={{ xs: 0, md: -10, lg: 10 }}
                   canvasStyle={{ marginTop: '3rem' }}
+                  config={getGlobeConfig('ultrahdr')}
                 />
               </Grid>
             </Grid>
