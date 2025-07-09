@@ -12,7 +12,7 @@ export const globeConfig = {
       source: {
         url: "https://threejs.org/examples/webgl_loader_texture_ultrahdr.html"
       },
-      scale: 5.5,  // Adjust this value to zoom in/out (1.0 = 100%, 1.5 = 150%, etc.)
+      scale: 5.0,  // Adjust this value to zoom in/out (1.0 = 100%, 1.5 = 150%, etc.)
       opacity: 0.3,  // Transparency level (0.0 = fully transparent, 1.0 = fully opaque)
       aspectRatio: "16:9"  // Aspect ratio (e.g., "16:9", "4:3", "1:1", or null for natural ratio)
     },
