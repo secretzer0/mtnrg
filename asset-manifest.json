@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.524fb610.css",
-    "main.js": "/static/js/main.fad5ffc3.js",
+    "main.js": "/static/js/main.789c174d.js",
     "static/media/product-page2.png": "/static/media/product-page2.fafec2ddaf4d892b537a.png",
     "static/media/background-cover-auth-signup.png": "/static/media/background-cover-auth-signup.a237cf3d5c13f0b46ac2.png",
     "static/media/background-cover-auth-signin.png": "/static/media/background-cover-auth-signin.97701ca56e940e621ae5.png",
@@ -68,10 +68,10 @@
     "static/media/green-lightning.svg": "/static/media/green-lightning.c20f110b7b466ab0409ebe815ace4c95.svg",
     "static/media/white-lightning.svg": "/static/media/white-lightning.4b30144a95d73615625d82776f129a8f.svg",
     "main.524fb610.css.map": "/static/css/main.524fb610.css.map",
-    "main.fad5ffc3.js.map": "/static/js/main.fad5ffc3.js.map"
+    "main.789c174d.js.map": "/static/js/main.789c174d.js.map"
   },
   "entrypoints": [
     "static/css/main.524fb610.css",
-    "static/js/main.fad5ffc3.js"
+    "static/js/main.789c174d.js"
   ]
 }
