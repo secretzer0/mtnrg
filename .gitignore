@@ -4,6 +4,7 @@
 /node_modules
 .DS_Store
 .claude
+GLOBE_CONFIG_IMPLEMENTATION.md
 
 # testing
 /coverage
