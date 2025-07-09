@@ -43,24 +43,27 @@ function ExternalViewer({ config, canvasStyle, ...rest }) {
   // Get opacity from config, default to 1.0 if not specified
   const opacity = config.opacity !== undefined ? config.opacity : 1.0;
   
-  // Calculate aspect ratio dimensions
-  let aspectRatioStyle = {};
+  // Calculate aspect ratio for container
+  let containerWidth = "700px";
+  let containerHeight = "600px";
+  
   if (config.aspectRatio) {
     const [widthRatio, heightRatio] = config.aspectRatio.split(':').map(Number);
     if (widthRatio && heightRatio) {
-      aspectRatioStyle = {
-        aspectRatio: `${widthRatio} / ${heightRatio}`,
-        objectFit: 'cover'
-      };
+      // Keep width fixed and adjust height based on aspect ratio
+      const width = 700;
+      const height = Math.round((width * heightRatio) / widthRatio);
+      containerHeight = `${height}px`;
     }
   }
+  
+  // Debug log
+  console.log('ExternalViewer config:', { scale, opacity, aspectRatio: config.aspectRatio, containerHeight });
   
   // Merge styles - make it responsive and behind other content
   const iframeStyles = {
     width: "100%",
     height: "100%",
-    minWidth: "700px",
-    minHeight: "600px",
     border: "none",
     borderRadius: "8px",
     backgroundColor: "transparent",
@@ -69,7 +72,6 @@ function ExternalViewer({ config, canvasStyle, ...rest }) {
     left: 0,
     zIndex: -1,
     pointerEvents: "auto",
-    ...aspectRatioStyle,
     ...canvasStyle,
     ...config.sandbox?.styles,
   };
@@ -97,8 +99,8 @@ function ExternalViewer({ config, canvasStyle, ...rest }) {
   return (
     <VuiBox {...rest}>
       <div style={{ 
-        width: "700px", 
-        height: "600px",
+        width: containerWidth, 
+        height: containerHeight,
         position: "relative",
         overflow: "hidden",
         transform: `scale(${scale})`,
