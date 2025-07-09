@@ -11,25 +11,29 @@ export const globeConfig = {
       type: "external",
       source: {
         url: "https://threejs.org/examples/webgl_loader_texture_ultrahdr.html"
-      }
+      },
+      scale: 1.5  // Adjust this value to zoom in/out (1.0 = 100%, 1.5 = 150%, etc.)
     },
     animation_keyframes: {
       type: "external",
       source: {
         url: "https://threejs.org/examples/webgl_animation_keyframes.html"
-      }
+      },
+      scale: 1.0  // Default scale
     },
     particles: {
       type: "external",
       source: {
         url: "https://threejs.org/examples/webgl_points_waves.html"
-      }
+      },
+      scale: 1.0  // Default scale
     },
     galaxy: {
       type: "external",
       source: {
         url: "https://threejs.org/examples/webgl_points_sprites.html"
-      }
+      },
+      scale: 1.0  // Default scale
     }
   },
 

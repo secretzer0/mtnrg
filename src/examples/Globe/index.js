@@ -194,6 +194,7 @@ Globe.propTypes = {
       url: PropTypes.string,
       proxy: PropTypes.bool,
     }),
+    scale: PropTypes.number,
     fallback: PropTypes.shape({
       enabled: PropTypes.bool,
       useBuiltin: PropTypes.bool,

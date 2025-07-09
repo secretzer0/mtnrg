@@ -37,6 +37,9 @@ function ExternalViewer({ config, canvasStyle, ...rest }) {
   // Apply sandbox permissions
   const sandboxPermissions = config.sandbox?.permissions?.join(" ") || "allow-scripts allow-same-origin";
   
+  // Get scale from config, default to 1.0 if not specified
+  const scale = config.scale || 1.0;
+  
   // Merge styles - make it responsive and behind other content
   const iframeStyles = {
     width: "100%",
@@ -51,6 +54,8 @@ function ExternalViewer({ config, canvasStyle, ...rest }) {
     left: 0,
     zIndex: -1,
     pointerEvents: "auto",
+    transform: `scale(${scale})`,
+    transformOrigin: "center center",
     ...canvasStyle,
     ...config.sandbox?.styles,
   };
@@ -120,6 +125,7 @@ ExternalViewer.propTypes = {
       url: PropTypes.string.isRequired,
       proxy: PropTypes.bool,
     }).isRequired,
+    scale: PropTypes.number,
     fallback: PropTypes.shape({
       enabled: PropTypes.bool,
       useBuiltin: PropTypes.bool,
