@@ -76,42 +76,40 @@ function ExternalViewer({ config, canvasStyle, ...rest }) {
   }
 
   return (
-    <VuiBox 
-      {...rest} 
-      sx={{ 
+    <VuiBox {...rest}>
+      <div style={{ 
         width: "700px", 
         height: "600px",
         position: "relative",
         overflow: "hidden",
-        ...rest.sx 
-      }}
-    >
-      {loading && (
-        <div style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          backgroundColor: "rgba(0,0,0,0.5)",
-          borderRadius: "8px",
-          zIndex: 10,
-        }}>
-          <VuiTypography variant="body2" color="white">
-            Loading...
-          </VuiTypography>
-        </div>
-      )}
-      <iframe
-        ref={iframeRef}
-        src={config.source.url}
-        title="External Three.js Example"
-        sandbox={sandboxPermissions}
-        style={iframeStyles}
-      />
+      }}>
+        {loading && (
+          <div style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: "rgba(0,0,0,0.5)",
+            borderRadius: "8px",
+            zIndex: 10,
+          }}>
+            <VuiTypography variant="body2" color="white">
+              Loading...
+            </VuiTypography>
+          </div>
+        )}
+        <iframe
+          ref={iframeRef}
+          src={config.source.url}
+          title="External Three.js Example"
+          sandbox={sandboxPermissions}
+          style={iframeStyles}
+        />
+      </div>
     </VuiBox>
   );
 }
