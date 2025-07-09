@@ -2,25 +2,37 @@
 
 A React-based admin dashboard template with automated GitHub deployment.
 
-## Development Workflow
+## Getting Started - Run Locally
 
-### 1. Local Development
-
-Before making any changes, test locally:
-
+### Development Mode
 ```bash
 # Install dependencies (first time only)
 npm install
 
-# Run locally to test changes
+# Run in development mode
 npm start
 # Opens at http://localhost:3000
-
-# Build locally to ensure it compiles
-npm run build
 ```
 
-### 2. Making Changes
+### Production Build & Preview
+```bash
+# Create production build
+npm run build
+
+# Serve the production build locally
+npx serve -s build
+# Opens at http://localhost:3000
+
+# Alternative: Install serve globally
+npm install -g serve
+serve -s build
+```
+
+The production build creates optimized static files in the `build/` directory that can be deployed to any static hosting service.
+
+## Development Workflow
+
+### 1. Making Changes
 
 ```bash
 # Always work on development branch
@@ -35,7 +47,7 @@ git commit -m "Description of changes"
 git push origin development
 ```
 
-### 3. Creating a Pull Request
+### 2. Creating a Pull Request
 
 1. Go to your GitHub repository
 2. Click "Pull requests" → "New pull request"
@@ -44,14 +56,14 @@ git push origin development
 5. Review your changes
 6. Click "Merge pull request" → "Confirm merge"
 
-### 4. Build Status
+### 3. Build Status
 
 After merging:
 1. Go to the "Actions" tab in your repository
 2. Click on the latest workflow run
 3. Check if the build succeeded (green checkmark) or failed (red X)
 
-### 5. If Build Fails
+### 4. If Build Fails
 
 1. Click on the failed workflow to see error details
 2. Fix the issues in your local development branch:
