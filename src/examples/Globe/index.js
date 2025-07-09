@@ -195,6 +195,8 @@ Globe.propTypes = {
       proxy: PropTypes.bool,
     }),
     scale: PropTypes.number,
+    opacity: PropTypes.number,
+    aspectRatio: PropTypes.string,
     fallback: PropTypes.shape({
       enabled: PropTypes.bool,
       useBuiltin: PropTypes.bool,

@@ -40,6 +40,21 @@ function ExternalViewer({ config, canvasStyle, ...rest }) {
   // Get scale from config, default to 1.0 if not specified
   const scale = config.scale || 1.0;
   
+  // Get opacity from config, default to 1.0 if not specified
+  const opacity = config.opacity !== undefined ? config.opacity : 1.0;
+  
+  // Calculate aspect ratio dimensions
+  let aspectRatioStyle = {};
+  if (config.aspectRatio) {
+    const [widthRatio, heightRatio] = config.aspectRatio.split(':').map(Number);
+    if (widthRatio && heightRatio) {
+      aspectRatioStyle = {
+        aspectRatio: `${widthRatio} / ${heightRatio}`,
+        objectFit: 'cover'
+      };
+    }
+  }
+  
   // Merge styles - make it responsive and behind other content
   const iframeStyles = {
     width: "100%",
@@ -54,8 +69,7 @@ function ExternalViewer({ config, canvasStyle, ...rest }) {
     left: 0,
     zIndex: -1,
     pointerEvents: "auto",
-    transform: `scale(${scale})`,
-    transformOrigin: "center center",
+    ...aspectRatioStyle,
     ...canvasStyle,
     ...config.sandbox?.styles,
   };
@@ -87,6 +101,9 @@ function ExternalViewer({ config, canvasStyle, ...rest }) {
         height: "600px",
         position: "relative",
         overflow: "hidden",
+        transform: `scale(${scale})`,
+        transformOrigin: "center center",
+        opacity: opacity,
       }}>
         {loading && (
           <div style={{
@@ -126,6 +143,8 @@ ExternalViewer.propTypes = {
       proxy: PropTypes.bool,
     }).isRequired,
     scale: PropTypes.number,
+    opacity: PropTypes.number,
+    aspectRatio: PropTypes.string,
     fallback: PropTypes.shape({
       enabled: PropTypes.bool,
       useBuiltin: PropTypes.bool,
