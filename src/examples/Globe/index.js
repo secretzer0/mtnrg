@@ -27,7 +27,7 @@ import { OrbitControls } from "@three-ts/orbit-controls";
 
 import VuiBox from "components/VuiBox";
 
-function Globe({ canvasStyle, ...rest }) {
+function Globe({ canvasStyle, config, ...rest }) {
   const globeRef = useRef(null);
   const canvasRef = useRef(null);
 
@@ -156,11 +156,20 @@ function Globe({ canvasStyle, ...rest }) {
 // Setting default values for the props for Globe
 Globe.defaultProps = {
   canvasStyle: {},
+  config: {
+    type: "builtin",
+  },
 };
 
 // Typechecking props for the Globe
 Globe.propTypes = {
   canvasStyle: PropTypes.objectOf(PropTypes.any),
+  config: PropTypes.shape({
+    type: PropTypes.oneOf(["builtin", "external"]),
+    source: PropTypes.shape({
+      url: PropTypes.string,
+    }),
+  }),
 };
 
 export default Globe;
