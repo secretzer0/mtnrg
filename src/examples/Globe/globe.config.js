@@ -11,7 +11,8 @@ export const globeConfig = {
       type: "external",
       source: {
         // url: "https://threejs.org/examples/webgl_loader_texture_ultrahdr.html"
-        url: "https://threejs.org/examples/webgl_points_dynamic.html"
+        // url: "https://threejs.org/examples/webgl_points_dynamic.html"
+        url: "https://threejs.org/examples/webgpu_tsl_galaxy"
       },
       scale: 5.5,  // Adjust this value to zoom in/out (1.0 = 100%, 1.5 = 150%, etc.)
       opacity: 0.3,  // Transparency level (0.0 = fully transparent, 1.0 = fully opaque)
